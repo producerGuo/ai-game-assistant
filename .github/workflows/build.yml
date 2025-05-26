@@ -23,35 +23,20 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyautogui pillow requests mss pyinstaller opencv-python numpy
         
-    - name: List files before build
-      run: |
-        echo "Current directory contents:"
-        dir
-        
     - name: Build executable
       run: |
-        echo "Building with PyInstaller..."
-        pyinstaller --onefile --windowed --name="AI-Game-Assistant" main_enhanced.py
-        echo "Build completed, checking dist folder:"
-        dir dist
+        pyinstaller --onefile --windowed --name=AI-Game-Assistant main_enhanced.py
         
-    - name: List all generated files
+    - name: List files in dist
+      shell: bash
       run: |
-        echo "All files in dist folder:"
-        dir dist /s
-        if exist "dist\AI-Game-Assistant.exe" (
-          echo "Found AI-Game-Assistant.exe"
-        ) else (
-          echo "AI-Game-Assistant.exe not found"
-        )
+        echo "Files in dist directory:"
+        ls -la dist/
         
-    - name: Upload executable (try multiple patterns)
+    - name: Upload executable
       uses: actions/upload-artifact@v4
       with:
         name: AI-Game-Assistant-Windows
-        path: |
-          dist/*.exe
-          dist/AI-Game-Assistant.exe
-          dist/AI-Game-Assistant-Enhanced.exe
+        path: dist/AI-Game-Assistant.exe
         if-no-files-found: warn
         retention-days: 30
