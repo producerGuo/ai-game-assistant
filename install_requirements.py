@@ -6,8 +6,8 @@ def install_packages():
         "pyautogui",
         "pillow",
         "requests",
-        "mss"
-        "opencv-python"
+        "mss",
+        "opencv-python",
         "numpy"
     ]
     
