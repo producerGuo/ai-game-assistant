@@ -11,7 +11,7 @@ def build_executable():
         "--windowed",
         "--name=AI游戏助手",
         "--icon=icon.ico",  # 如果有图标文件
-        "main.py"
+        "main_enhance.py"
     ]
     
     try:
