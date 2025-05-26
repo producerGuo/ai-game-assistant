@@ -7,6 +7,8 @@ def install_packages():
         "pillow",
         "requests",
         "mss"
+        "opencv-python"
+        "numpy"
     ]
     
     for package in packages:
